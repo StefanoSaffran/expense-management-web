@@ -9,12 +9,8 @@ export default createGlobalStyle`
   }
 
   html {
-    font-size: 62.5%; /* 1rem = 10px */
+    font-size: 60%;
     height: 100%;
-
-    @media (min-width: 1981px) {
-      font-size: 80%;
-    };
   }
 
   #root, body {
@@ -43,7 +39,7 @@ export default createGlobalStyle`
   }
 
   input::placeholder, textarea::placeholder {
-    color: var(--placeholder);
+    color: ${({ theme }) => theme.colors.darkGrey};
   }
 
   a {
@@ -62,5 +58,23 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  @media (min-width: 1981px) {
+    html {
+      font-size: 80%;
+    }
+  }
+
+  @media (min-width: 700px) {
+    html {
+      font-size: 62.5%; /* 1rem = 10px */
+    }
+  }
+
+  @media (max-width: 420px) {
+    html {
+      font-size: 55.5%;
+    }
   }
 `;
