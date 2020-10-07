@@ -13,10 +13,15 @@ interface IProps {
   };
 }
 
+const EARNING_COLOR = '#16a085';
+const EXPENSE_COLOR = '#c0392b';
+
 const Summary: FC<IProps> = ({ totalTransactions, balanceValues }) => {
   const formattedIncome = formatNumber(balanceValues.income);
   const formattedOutcome = formatNumber(balanceValues.outcome);
   const formattedBalance = formatNumber(balanceValues.balance);
+  const BALANCE_COLOR =
+    balanceValues.balance >= 0 ? EARNING_COLOR : EXPENSE_COLOR;
 
   return (
     <Container>
@@ -25,16 +30,16 @@ const Summary: FC<IProps> = ({ totalTransactions, balanceValues }) => {
         <span>{totalTransactions}</span>
       </div>
       <div>
-        <strong>Lançamentos</strong>
-        <span>{formattedIncome}</span>
+        <strong>Receitas: </strong>
+        <span style={{ color: `${EARNING_COLOR}` }}>{formattedIncome}</span>
       </div>
       <div>
-        <strong>Lançamentos</strong>
-        <span>{formattedOutcome}</span>
+        <strong>Despesas: </strong>
+        <span style={{ color: `${EXPENSE_COLOR}` }}>{formattedOutcome}</span>
       </div>
       <div>
-        <strong>Lançamentos</strong>
-        <span>{formattedBalance}</span>
+        <strong>Saldo: </strong>
+        <span style={{ color: `${BALANCE_COLOR}` }}>{formattedBalance}</span>
       </div>
     </Container>
   );
