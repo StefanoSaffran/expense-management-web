@@ -1,6 +1,8 @@
 import React from 'react';
 import { FiPlus } from 'react-icons/fi';
+
 import Button from '../../../components/Button';
+import Input from '../../../components/Input';
 
 import { Container } from './styles';
 
@@ -16,7 +18,14 @@ const Actions = ({ filter, handleChangeFilter }: IProps) => {
         <FiPlus /> Novo lançamento
       </Button>
 
-      <input type="text" value={filter} onChange={handleChangeFilter} />
+      <Input
+        required
+        containerStyle={{ marginLeft: 16 }}
+        label="Filtro"
+        name="filter"
+        value={filter}
+        onChange={handleChangeFilter}
+      />
     </Container>
   );
 };

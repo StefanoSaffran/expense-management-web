@@ -24,6 +24,7 @@ export const Container = styled.button<ButtonProps>`
     background: ${background || theme.colors.background};
     border: 0;
     padding: 0.8rem 1.6rem;
+    flex-shrink: 0;
     border-radius: ${theme.radii.small};
     color: ${color || theme.colors.primary};
     transition: ${theme.transition.default};

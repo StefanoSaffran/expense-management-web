@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import { IPeriod } from '../../../utils/generate-periods';
-import { Container, ArrowButton } from './styles';
+import { Container, SelectContainer, ArrowButton } from './styles';
 
 interface IProps {
   allPeriods: IPeriod[];
@@ -50,13 +50,16 @@ const PeriodSelector = ({
         <FiChevronLeft size={24} />
       </ArrowButton>
 
-      <select value={selectedPeriod.id} onChange={handleSelectChange}>
-        {allPeriods.map(periodOp => (
-          <option key={periodOp.id} value={periodOp.id}>
-            {periodOp.description}
-          </option>
-        ))}
-      </select>
+      <SelectContainer>
+        <select value={selectedPeriod.id} onChange={handleSelectChange}>
+          {allPeriods.map(periodOp => (
+            <option key={periodOp.id} value={periodOp.id}>
+              {periodOp.description}
+            </option>
+          ))}
+        </select>
+        <FiChevronDown size={18} />
+      </SelectContainer>
 
       <ArrowButton
         color={primary}
