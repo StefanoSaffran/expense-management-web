@@ -9,6 +9,8 @@ import Actions from './Actions';
 import PeriodSelector from './PeriodSelector';
 import DefaultLayout from '../_layouts/default';
 import Loading from '../../components/Loading';
+import Modal from '../../components/Modal/ModalAddTransaction';
+
 import generatePeriods, { IPeriod } from '../../utils/generate-periods';
 
 import { Container, Wrapper } from './styles';
@@ -28,6 +30,7 @@ const Dashboard: FC = () => {
   const [filter, setFilter] = useState('');
   const [allPeriods, setAllPeriods] = useState<IPeriod[]>([]);
   const [period, setPeriod] = useState({} as IPeriod);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const getAllPeriods = (): void => {
@@ -118,9 +121,24 @@ const Dashboard: FC = () => {
     return result;
   }, [filteredTransactions]);
 
+  const toggleModal = useCallback(() => {
+    setModalOpen(!modalOpen);
+  }, [modalOpen]);
+
+  const handleAddTransaction = useCallback(async newTransaction => {
+    const { data } = await api.post('/api/transaction', newTransaction);
+
+    setTransactions(oldState => [...oldState, data]);
+  }, []);
+
   return (
     <DefaultLayout>
       <Container>
+        <Modal
+          isOpen={modalOpen}
+          setIsOpen={toggleModal}
+          onSave={handleAddTransaction}
+        />
         <Wrapper>
           {transactions.length ? (
             <>
@@ -140,6 +158,7 @@ const Dashboard: FC = () => {
               <Actions
                 filter={filter}
                 handleChangeFilter={handleChangeFilter}
+                openModal={toggleModal}
               />
 
               <TransactionsList

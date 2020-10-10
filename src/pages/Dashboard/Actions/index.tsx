@@ -9,12 +9,13 @@ import { Container } from './styles';
 interface IProps {
   filter: string;
   handleChangeFilter(e: React.ChangeEvent<HTMLInputElement>): void;
+  openModal(): void;
 }
 
-const Actions = ({ filter, handleChangeFilter }: IProps) => {
+const Actions = ({ filter, handleChangeFilter, openModal }: IProps) => {
   return (
     <Container>
-      <Button variant="secondary" onClick={() => {}}>
+      <Button variant="secondary" onClick={openModal}>
         <FiPlus /> Novo lançamento
       </Button>
 
