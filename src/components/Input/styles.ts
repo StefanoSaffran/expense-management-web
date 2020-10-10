@@ -12,7 +12,7 @@ export const Container = styled.div`
       -moz-appearance: none;
       -webkit-appearance: none;
       appearance: none;
-      padding: 12px 20px 6px 0;
+      padding: 1.2rem 2rem 0.6rem 0;
       border: none;
       border-bottom: 1px solid ${theme.colors.grey};
       background-color: transparent;

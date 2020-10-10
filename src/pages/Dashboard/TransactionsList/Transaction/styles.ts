@@ -32,6 +32,10 @@ export const Details = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  > strong {
+    font-weight: 600;
+  }
 `;
 
 export const Price = styled.span``;
